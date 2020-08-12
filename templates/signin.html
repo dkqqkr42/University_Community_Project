@@ -32,10 +32,16 @@
     <title>로그인</title>
     <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 </head>
-
+{% if messages %}
+    {% for message in messages %}
+    <script type="text/javascript">
+        alert('{{ message }}')
+    </script>
+    {% endfor %}
+{% endif %}
 <body class="text-center">
 
-    <form class="form-signin" method="post" action="/login/">
+    <form class="form-signin" method="post" action="/signin/">
         {% csrf_token %}
         <svg class="bi bi-lock-fill mb-4" width="8em" height="8em" viewBox="0 0 16 16" fill="currentColor"
             xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +56,7 @@
         <div class="checkbox mb-3">
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2020. JaeHo.Co. Ltd. all rights reserved.</p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020. 1조.Co. Ltd. all rights reserved.</p>
     </form>
 </body>
 
