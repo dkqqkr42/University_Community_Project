@@ -9,6 +9,7 @@ from django.forms.models import model_to_dict
 def index(request):
     return render(request, 'index.html')
 
+<<<<<<< HEAD
 def signup(request):
     # 실제 데이터베이스에 데이터를 저장 (회원가입)
     if request.method == 'POST':
@@ -60,3 +61,10 @@ def signout(request):
     request.session.flush() # 전체 삭제
 
     return HttpResponseRedirect('/index/')
+=======
+def signin(request):
+    return render(request, 'signin.html')
+
+def signup(request):
+    return render(request, 'signup.html')
+>>>>>>> 4215dca3659a03611c601ff70e3df0f3fda99850

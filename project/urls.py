@@ -22,5 +22,8 @@ urlpatterns = [
     path('index/', views.index),
     path('signup/', views.signup),
     path('signin/', views.signin),
+<<<<<<< HEAD
     path('signout/', views.signout),
+=======
+>>>>>>> 4215dca3659a03611c601ff70e3df0f3fda99850
 ]
