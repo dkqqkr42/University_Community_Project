@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+        <svg class="bi bi-unlock-fill mb-4" width="8em" height="8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  			<rect width="11" height="9" x="2.5" y="7" rx="2"/>
+  			<path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+ 		</svg>
+            <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+            <h2>회원가입</h2>
+            <p class="lead">회원가입하세요. 가입하면 게시판을 열람할 수 있습니다.</p>
+        </div>
+
+        <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">회원정보</h4>
+            <form class="needs-validation" action="/signin/" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="username">아이디</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="userID" placeholder="아이디" required name="userID">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password">비밀번호</label> 
+                    <input type="password" class="form-control" id="userPassword" placeholder="비밀번호" value="" required name="userPassword">
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="firstName">이름</label> 
+                    <input type="text" class="form-control" id="userName" placeholder="이름" value="" required name="userName">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">이메일</label>
+                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" name="userEmail">
+                </div>
+                
+                <div class="mb-3">
+                	<div class="btn-group" data-toggle="button">
+                		<label class='btn btn-primary'>
+                			<input type="radio" name="userGender" autocomplete="off" value="남자">남자
+                		</label>
+                		<label class='btn btn-primary'>
+                			<input type="radio" name="userGender" autocomplete="off" value="여자">여자
+                		</label>
+                	</div>
+                </div>
+
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                <hr class="mb-4">
+
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
