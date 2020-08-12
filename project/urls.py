@@ -25,4 +25,5 @@ urlpatterns = [
     path('signout/', views.signout),
     path('map/', views.map),
     path('board/', views.board),
+    path('map_data/', views.map_data),
 ]
