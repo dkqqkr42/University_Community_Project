@@ -56,4 +56,7 @@ def signup(request):
     #     return HttpResponse('이미 사용중입니다.')
 
     return render(request, 'signup.html')
+
+def board(request):
+    return render(request, 'board.html')
   
