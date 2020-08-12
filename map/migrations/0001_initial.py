@@ -12,14 +12,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name='Point',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('userID', models.CharField(max_length=50)),
-                ('userPassword', models.CharField(max_length=100)),
-                ('userName', models.CharField(max_length=10)),
-                ('userEmail', models.CharField(max_length=50)),
-                ('userGender', models.CharField(max_length=50)),
+                ('title', models.CharField(max_length=100)),
+                ('lat', models.FloatField()),
+                ('lng', models.FloatField()),
             ],
         ),
     ]
