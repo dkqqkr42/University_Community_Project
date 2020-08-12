@@ -8,17 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/scrolling-nav.css' %}" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'jquery.easing.min.js' %}"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{% static 'js/scrolling-nav.js' %}"></script>
 
   <title>1조</title>
- <!--<style>
+<style>
 	.bg1{
 	z-index:1;
 	position:relative;
@@ -36,7 +42,7 @@
 	left:0;
 	content:"";
   /* The image used */
-  background-image: url("image/maina.jpeg");
+  background-image: url("{% static 'image/maina.jpeg' %}");
 
   /* Full height */
 
@@ -63,7 +69,7 @@
 	left:0;
 	content:"";
   /* The image used */
-  background-image: url("image/mainc.png");
+  background-image: url("{% static 'image/mainc.png' %}");
 
   /* Full height */
 
@@ -73,7 +79,6 @@
   background-size: cover;
   opacity: 0.3!important; filter:alpha(opacity=30);
 }
--->
       
 </style>
 </head>
@@ -134,5 +139,6 @@
     </div>
     <!-- /.container -->
   </footer>
+  
 </body>
 </html>
