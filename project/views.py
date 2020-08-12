@@ -1,13 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
 from signin.models import User
 from django.http import JsonResponse # JSON 응답
-=======
-from django.http import JsonResponse # JSON 응답
-from map.models import Point
->>>>>>> 45c26b7f7d7126df42c7f96e592be1c7a662390d
 from django.forms.models import model_to_dict
 
 def index(request):
