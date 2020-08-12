@@ -13,7 +13,6 @@ def signin(request):
         # 회원정보 조회
         userID = request.POST.get('userID')
         userPassword = request.POST.get('userPassword')
-
         try:
             # select * from user where email=? and pwd=?
             user = User.objects.get(userID=userID, userPassword=userPassword)
