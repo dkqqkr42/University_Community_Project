@@ -39,8 +39,7 @@ def map_data(request):
     for d in data:
         d = model_to_dict(d) # QuerySet -> Dict
         dist = distance(float(lat), float(lng), d['lat'], d['lng'])
-        if(dist <= 150): # 10km 이내의 장소만 응답결과로 저장
-            map_list.append(d)
+        map_list.append(d)
     # dict가 아닌 자료는 항상 safe=False 옵션 사용
     return JsonResponse(map_list, safe=False)
     
@@ -131,3 +130,10 @@ def signout(request):
     request.session.flush() # 전체 삭제
     return HttpResponseRedirect('/index/')
   
+def map_data(request):
+    list = Point.objects.all()
+    data = []
+    for li in list:
+        li = model_to_dict(li)
+        data.append(li)
+    return JsonResponse(data, safe=False)
