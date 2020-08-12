@@ -13,7 +13,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>블라블라</h2>
+          {% if request.session.email %}
+          <h2>{{ request.session.email }}님</h2>
+          {% else %}
+          <h2>세션없음</h2>
+          {% endif %}
           <p class="lead">블라블라라  :</p>
           <ul>
             <li>A</li>

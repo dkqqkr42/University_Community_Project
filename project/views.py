@@ -5,6 +5,7 @@ from signin.models import User
 from map.models import Point
 from django.http import JsonResponse # JSON 응답
 from django.forms.models import model_to_dict
+from django.contrib import messages
 
 def index(request):
     return render(request, 'index.html')
@@ -19,9 +20,10 @@ def signin(request):
             user = User.objects.get(userID=userID, userPassword=userPassword)
             # 정보표시
             request.session['userID'] = userID
-            return render(request, 'signin_success.html')
+            return render(request, 'index.html')
         except:
-            return render(request, 'signin_fail.html')
+            messages.info(request, '아이디나 비밀번호가 다릅니다.')
+            return HttpResponseRedirect('/signin/')
 
     return render(request, 'signin.html')
 
@@ -58,4 +60,9 @@ def signup(request):
 
 def board(request):
     return render(request, 'board.html')
+
+def signout(request):
+    del request.session['userID'] # 개별 삭제
+    request.session.flush() # 전체 삭제
+    return HttpResponseRedirect('/index/')
   

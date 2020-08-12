@@ -32,7 +32,13 @@
     <title>로그인</title>
     <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 </head>
-
+{% if messages %}
+    {% for message in messages %}
+    <script type="text/javascript">
+        alert('{{ message }}')
+    </script>
+    {% endfor %}
+{% endif %}
 <body class="text-center">
 
     <form class="form-signin" method="post" action="/signin/">
