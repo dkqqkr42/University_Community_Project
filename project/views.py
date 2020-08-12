@@ -41,7 +41,6 @@ def map_data(request):
     # dict가 아닌 자료는 항상 safe=False 옵션 사용
     return JsonResponse(map_list, safe=False)
 def signup(request):
-<<<<<<< HEAD
     if request.method == 'POST':
         userID = request.POST.get("userID")
         userPassword = request.POST.get("userPassword")
@@ -57,6 +56,3 @@ def signup(request):
 
     return render(request, 'signup.html')
   
-=======
-    return render(request, 'signup.html')
->>>>>>> 45c26b7f7d7126df42c7f96e592be1c7a662390d
