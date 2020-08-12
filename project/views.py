@@ -19,7 +19,7 @@ def signin(request):
             user = User.objects.get(userID=userID, userPassword=userPassword)
             # 정보표시
             request.session['userID'] = userID
-            return render(request, 'signin_success.html')
+            return render(request, '/index/')
         except:
             return render(request, 'signin_fail.html')
 
