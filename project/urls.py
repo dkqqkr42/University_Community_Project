@@ -22,4 +22,5 @@ urlpatterns = [
     path('index/', views.index),
     path('login/', views.login),
     path('signin/', views.signin),
+    path('map/', views.map),
 ]
