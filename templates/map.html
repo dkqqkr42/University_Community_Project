@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- map creation 파트 -->
+
+<div class="jumbotron">
+    <div class="container text-center">
+        <div id="map" style="width:500px; height:400px; margin:0 auto;"></div>
+    </div>
+</div>
+
+<script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=38d34c29c097c5f5c8c02416cb4aefff"></script>
+<script>
+var container = document.getElementById('map');
+var options = {
+    center : new kakao.maps.LatLng(36.541437, 128.797563), // 안동대학교
+    level : 4
+};
+var map = new kakao.maps.Map(container, options);
+var markerPosition = new kakao.maps.LatLng(36.541437, 128.797563);
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+marker.setMap(map);
+</script>
+
+{% endblock %}
