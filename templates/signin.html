@@ -1,81 +1,56 @@
 {% load static %}
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <title>로그인</title>
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-    <div class="container">
-        <div class="py-5 text-center">
-        <svg class="bi bi-unlock-fill mb-4" width="8em" height="8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  			<rect width="11" height="9" x="2.5" y="7" rx="2"/>
-  			<path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
- 		</svg>
-            <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-            <h2>회원가입</h2>
-            <p class="lead">회원가입하세요. 가입하면 게시판을 열람할 수 있습니다.</p>
+<body class="text-center">
+    <form class="form-signin" method="post" action="/login/">
+        {% csrf_token %}
+        <svg class="bi bi-lock-fill mb-4" width="8em" height="8em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect width="11" height="9" x="2.5" y="7" rx="2" />
+            <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z" />
+        </svg>
+        <h1 class="h3 mb-3 font-weight-normal">로그인 해 주세요</h1>
+        <label for="inputID" class="sr-only">ID</label>
+        <input type="text" id="inputID" class="form-control" placeholder="아이디" name="userID" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" name="userPassword" required>
+        <div class="checkbox mb-3">
         </div>
-
-        <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">회원정보</h4>
-            <form class="needs-validation" action="joinAction.jsp" method="post">
-
-
-                <div class="mb-3">
-                    <label for="username">아이디</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="username" placeholder="아이디" required name="userID">
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="password">비밀번호</label> 
-                    <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="userPassword">
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="firstName">이름</label> 
-                    <input type="text" class="form-control" id="real-name" placeholder="이름" value="" required name="userName">
-                </div>
-
-                <div class="mb-3">
-                    <label for="email">이메일</label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com" name="userEmail">
-                </div>
-                
-                <div class="mb-3">
-                	<div class="btn-group" data-toggle="button">
-                		<label class='btn btn-primary active'>
-                			<input type="radio" name="userGender" autocomplete="off" value="남자" checked>남자
-                		</label>
-                		<label class='btn btn-primary active'>
-                			<input type="radio" name="userGender" autocomplete="off" value="여자" checked>여자
-                		</label>
-                	</div>
-                </div>
-
-
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
-                <hr class="mb-4">
-
-            </form>
-        </div>
-
-    </div>
-
+        <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020. JaeHo.Co. Ltd. all rights reserved.</p>
+    </form>
 </body>
 
 </html>

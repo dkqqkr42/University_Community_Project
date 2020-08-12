@@ -8,9 +8,6 @@ from django.forms.models import model_to_dict
 def index(request):
     return render(request, 'index.html')
 
-def login(request):
-    return render(request, 'login.html')
-
 def signin(request):
     return render(request, 'signin.html')
 
@@ -29,3 +26,5 @@ def map_data(request):
             map_list.append(d)
     # dict가 아닌 자료는 항상 safe=False 옵션 사용
     return JsonResponse(map_list, safe=False)
+def signup(request):
+    return render(request, 'signup.html')
