@@ -60,12 +60,12 @@ def signup(request):
     return render(request, 'signup.html')
 
 def board(request):
-    # select * from article order by id desc
-    article_list = Article.objects.order_by('-id')
-    context = {'article_list' : article_list}
-    page = int(request.GET.get('p', 1)) #없으면 1로 지정
-    paginator = Paginator(article_list, 5) #한 페이지 당 몇개 씩 보여줄 지 지정 
-    return render(request, 'board.html', context)
+    articles = Article.objects
+    article_list = Article.objects.all().order_by('-id')
+    paginator = Paginator(article_list, 5)
+    page = int(request.GET.get('p', 1))
+    posts = paginator.get_page(page)
+    return render(request, "board.html", {'article_list' : article_list, 'posts' : posts})
 
 def write(request):
     if request.method == 'POST':
