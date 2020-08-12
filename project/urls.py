@@ -20,4 +20,7 @@ import project.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
+    path('signup/', views.signup),
+    path('signin/', views.signin),
+    path('signout/', views.signout),
 ]
