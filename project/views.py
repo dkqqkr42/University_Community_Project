@@ -26,15 +26,18 @@ def signin(request):
     return render(request, 'signin.html')
 
 def signup(request):
-    
-    userID = request.POST.get("userID")
-    userPassword = request.POST.get("userPassword")
-    userName = request.POST.get("userName")
-    userEmail = request.POST.get("userEmail")
-    userGender = request.POST.get("userGender")
+    if request.method == 'POST':
+        userID = request.POST.get("userID")
+        userPassword = request.POST.get("userPassword")
+        userName = request.POST.get("userName")
+        userEmail = request.POST.get("userEmail")
+        userGender = request.POST.get("userGender")
+        user = User(userID=userID, userPassword=userPassword, userName=userName, userEmail=userEmail, userGender=userGender)
+        user.save()
+        return HttpResponseRedirect('/index/')
 
-    if User.objects.filter(userID=userID).exists():
-        return HttpResponse('이미 사용중입니다.')
+    # if User.objects.filter(userID=userID).exists():
+    #     return HttpResponse('이미 사용중입니다.')
 
     return render(request, 'signup.html')
   
