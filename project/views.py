@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from signin.models import User
+from map.models import Point
 from django.http import JsonResponse # JSON 응답
 from django.forms.models import model_to_dict
 
@@ -54,4 +55,7 @@ def signup(request):
     #     return HttpResponse('이미 사용중입니다.')
 
     return render(request, 'signup.html')
+
+def board(request):
+    return render(request, 'board.html')
   
