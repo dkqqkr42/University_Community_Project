@@ -22,26 +22,14 @@ def signin(request):
             request.session['userID'] = userID
             return render(request, 'index.html')
         except:
-            messages.info(request, '아이디나 비밀번호가 다릅니다.')
-            return HttpResponseRedirect('/signin/')
+            # messages.info(request, '아이디나 비밀번호가 다릅니다.')
+            return HttpResponse('<script>alert("아이디나 비밀번호가 다릅니다.");history.back()</script>')
 
     return render(request, 'signin.html')
 
 def map(request):
     return render(request, 'map.html')              # map 생성
 
-def map_data(request):
-    data = Point.objects.all()
-    lat = request.GET.get('lat')
-    lng = request.GET.get('lng')
-    map_list = []
-    for d in data:
-        d = model_to_dict(d) # QuerySet -> Dict
-        dist = distance(float(lat), float(lng), d['lat'], d['lng'])
-        map_list.append(d)
-    # dict가 아닌 자료는 항상 safe=False 옵션 사용
-    return JsonResponse(map_list, safe=False)
-    
 def signup(request):
     if request.method == 'POST':
         userID = request.POST.get("userID")
@@ -64,7 +52,7 @@ def board(request):
 def signout(request):
     del request.session['userID'] # 개별 삭제
     request.session.flush() # 전체 삭제
-    return HttpResponseRedirect('/index/')
+    return HttpResponse('<script>alert("로그아웃 되었습니다.");history.back()</script>')
   
 def map_data(request):
     list = Point.objects.all()
@@ -73,3 +61,4 @@ def map_data(request):
         li = model_to_dict(li)
         data.append(li)
     return JsonResponse(data, safe=False)
+
