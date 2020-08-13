@@ -67,6 +67,14 @@ def board(request):
     posts = paginator.get_page(page)
     return render(request, "board.html", {'article_list' : article_list, 'posts' : posts})
 
+def search(request):
+    if request.GET.get('q'):
+            variable_column = request.GET.get('fd_name')
+            search_type = 'contains'
+            filter = variable_column + '__' + search_type
+            posts = Post.objects.filter(**{ filter: request.GET.get('q') }).order_by('-published_date')
+    return render(request, 'board.html', {'posts': posts,})
+
 def write(request):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -80,9 +88,9 @@ def write(request):
             # insert into article (title, content, user_id) values (?, ?, ?)
             article = Article(title=title, content=content, user=user)
             article.save()
-            return render(request, 'write_success.html')
+            return HttpResponse('<script>alert("글 작성이 완료되었습니다.");history.back()</script>')
         except:
-            return render(request, 'write_fail.html')
+            return HttpResponse('<script>alert("로그인 후 이용해주세요.");history.back()</script>')
     return render(request, 'write.html')
 
 
@@ -108,9 +116,9 @@ def update(request, id):
             article.title = title
             article.content = content
             article.save()
-            return render(request, 'update_success.html')
+            return HttpResponse('<script>alert("수정되었습니다.");history.back()</script>')
         except:
-            return render(request, 'update_fail.html')
+            return HttpResponse('<script>alert("수정할 수 없습니다.");history.back()</script>')
     context = {
         'article' : article
     }
@@ -121,9 +129,9 @@ def delete(request, id):
         # select * from article where id = ?
         article = Article.objects.get(id=id)
         article.delete()
-        return render(request, 'delete_success.html')
+        return HttpResponse('<script>alert("삭제되었습니다.");history.back()</script>')
     except:
-        return render(request, 'delete_fail.html')
+        return HttpResponse('<script>alert("삭제할 수 없습니다.");history.back()</script>')
 
 def signout(request):
     del request.session['userID'] # 개별 삭제

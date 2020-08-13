@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<body style="background-color:#e9e9e9">
 <div class="jumbotron">
+    <div style="padding:50px;"> </div>
     <div class="container text-center">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <!-- <th>번호</th> -->
+                    <th>#</th>
                     <th>제목</th>
                     <th>내용</th>
                     <th>작성자</th>
@@ -14,7 +17,7 @@
             <tbody>
                 {% for article in posts %}
                 <tr onclick=' location="/article/detail/{{ article.id }}"'>
-                    <!-- <td>{{ article.id }}</td> -->
+                    <td><small>{{ article.id }}</small></td>
                     <td>{{ article.title }}</td>
                     <td>{{ article.content }}</td>
                     <td>{{ article.user.userName }}</td>
@@ -23,7 +26,7 @@
             </tbody>
         </table>
         <nav>
-            <ul class="pagination justify-content-center">
+            <ul class="pagination pagination-sm justify-content-center">
                 {% if posts.has_previous %}                         
                 <li class="page-item">
                     <a class="page-link" href="?p={{ posts.previous_page_number }}">이전으로</a>
@@ -47,13 +50,23 @@
 				{% endif %}
             </ul>
 		</nav>
-		<div class="p-2">
+		<!-- <div class="p-2">
 			<input type="text" placeholder="검색" name="searchTitle">
-			<a href="search.jsp?searchTitle=" class="btn btn-primary btn-sm">검색</a>
-		 </div>
+			<a href="search.jsp?searchTitle=" class="btn btn-dark btn-sm">검색</a>
+         </div> -->
+         <form class="form-inline" action="/article/board/" method="get">
+            <div class="input-group">
+                <select name="fd_name" id="" class="form-control">
+                    <option value="{{ article.title }}">제목</option>
+                    <option value="{{ article.content }}">내용</option>
+                </select>
+                <input type="text" class="form-control" name='q'>
+                <button class="btn btn-secondary btn-sm" type="submit">검색</button>
+            </div>
+        </form> 
 		 <div class="p-2">
-        <a href="/article/write/" class="btn btn-info float-right">글쓰기</a>
+        <a href="/article/write/" class="btn btn-dark float-right">글쓰기</a>
 		</div>
     </div>
-</div>
+</div></body>
 {% endblock %}
