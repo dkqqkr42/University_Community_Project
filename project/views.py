@@ -52,20 +52,27 @@ def signup(request):
     return render(request, 'signup.html')
 
 def board(request):
-    articles = Article.objects
-    article_list = Article.objects.all().order_by('-id')
+    type = request.GET.get('type')
+    q = request.GET.get('q')
+    if type == 'title':
+        article_list = Article.objects.filter(title__contains=q)
+    # article_list = Article.objects.all().order_by('-id')
+    else:
+        if not q:
+            q = ''
+        article_list = Article.objects.filter(content__contains=q)
     paginator = Paginator(article_list, 5)
     page = int(request.GET.get('p', 1))
     posts = paginator.get_page(page)
     return render(request, "board.html", {'article_list' : article_list, 'posts' : posts})
 
-def search(request):
-    if request.GET.get('q'):
-            variable_column = request.GET.get('fd_name')
-            search_type = 'contains'
-            filter = variable_column + '__' + search_type
-            posts = Post.objects.filter(**{ filter: request.GET.get('q') }).order_by('-published_date')
-    return render(request, 'board.html', {'posts': posts,})
+# def search(request):
+#     if request.GET.get('q'):
+#             variable_column = request.GET.get('fd_name')
+#             search_type = 'contains'
+#             filter = variable_column + '__' + search_type
+#             posts = Post.objects.filter(**{ filter: request.GET.get('q') }).order_by('-published_date')
+#     return render(request, 'board.html', {'posts': posts,})
 
 def write(request):
     if not request.session.session_key:
