@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<body style="background-color:#e9e9e9">
+<body style="background-color:#E9ECEF">
 <div class="jumbotron">
     <div style="padding:50px;"> </div>
     <div class="container text-center">
@@ -29,11 +29,11 @@
             <ul class="pagination pagination-sm justify-content-center">
                 {% if posts.has_previous %}                         
                 <li class="page-item">
-                    <a class="page-link" href="?p={{ posts.previous_page_number }}">이전으로</a>
+                    <a class="page-link" href="?p={{ posts.previous_page_number }}">BACK</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
-                    <a class="page-link" href="#">이전으로</a>
+                    <a class="page-link" href="#">BACK</a>
                 </li>
                 {% endif %}
                 <li class="page-item">
@@ -41,11 +41,11 @@
                 </li>
                 {% if posts.has_next %}
                 <li class="page-item">
-					<a class="page-link" href="?p={{ posts.next_page_number }}">다음으로</a>
+					<a class="page-link" href="?p={{ posts.next_page_number }}">NEXT</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
-                    <a class="page-link" href="#">다음으로</a>
+                    <a class="page-link" href="#">NEXT</a>
                 </li>
 				{% endif %}
             </ul>
@@ -61,7 +61,7 @@
                     <option value="content">내용</option>
                 </select>
                 <input type="text" class="form-control" name='q'>
-                <button id='search-btn' class="btn btn-secondary btn-sm" type="submit">검색</button>
+                <button id='search-btn' class="btn btnEvent" type="image"><img src="https://cdn.icon-icons.com/icons2/1659/PNG/512/3844432-magnifier-search-zoom_110300.png" width="30" height="30"></button>
             </div>
         </form> 
 		 <div class="p-2">
