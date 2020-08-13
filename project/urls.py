@@ -24,6 +24,10 @@ urlpatterns = [
     path('signin/', views.signin),
     path('signout/', views.signout),
     path('map/', views.map),
-    path('board/', views.board),
     path('map_data/', views.map_data),
+    path('article/write/', views.write),
+    path('article/board/', views.board),
+    path('article/detail/<int:id>/', views.detail),
+    path('article/update/<int:id>/', views.update),
+    path('article/delete/<int:id>/', views.delete),
 ]
