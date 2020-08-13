@@ -2,9 +2,18 @@
 
 {% block content %}
 
+<header class="bg-info text-white">
+    <div class="container text-center">
+      <h1>캠퍼스맵</h1>
+      <br>
+      <p class="lead">주소 : 경상북도 안동시 경동로 1375 (송천동)</p>
+        <p>전화번호 : 054-820-5114</p>
+    </div>
+</header>
+
 <div class="jumbotron">
     <div class="container text-center">
-        <div id="map" style="width:900px; height:450px; margin:0 auto;"></div>
+        <div id="map" style="width:1000px; height:550px; margin:0 auto;"></div>
     </div>
 </div>
 
@@ -20,13 +29,14 @@
             center : new kakao.maps.LatLng(36.542258, 128.796883), // 안동대학교 (지도 중심 위치)
             level : 3
         };
+
         var map = new kakao.maps.Map(container, options);
         var markerPosition = new kakao.maps.LatLng(36.542258, 128.796883);  // 마커표시
         var marker = new kakao.maps.Marker({
             position: markerPosition
         });
         marker.setMap(map);
-        
+
         // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
         var positions = [
             {
@@ -215,6 +225,51 @@
                 infowindow.close();
             };
         }
+
+        // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
+        var polygonPath = [
+            new kakao.maps.LatLng(36.540750, 128.791177),
+            new kakao.maps.LatLng(36.539130, 128.794903),
+            new kakao.maps.LatLng(36.539649, 128.795149),
+            new kakao.maps.LatLng(36.540490, 128.796457),
+            new kakao.maps.LatLng(36.540878, 128.796559),
+            new kakao.maps.LatLng(36.540861, 128.796752),
+            new kakao.maps.LatLng(36.540990, 128.796956),
+            new kakao.maps.LatLng(36.538895, 128.800180),
+            new kakao.maps.LatLng(36.539237, 128.802444),
+            new kakao.maps.LatLng(36.541211, 128.803077),
+            new kakao.maps.LatLng(36.541865, 128.803252),
+            new kakao.maps.LatLng(36.544374, 128.801393),
+            new kakao.maps.LatLng(36.544978, 128.801003),
+            new kakao.maps.LatLng(36.544650, 128.800342),
+            new kakao.maps.LatLng(36.544616, 128.800084),
+            new kakao.maps.LatLng(36.544047, 128.798850),
+            new kakao.maps.LatLng(36.543943, 128.798443),
+            new kakao.maps.LatLng(36.544547, 128.796941),
+            new kakao.maps.LatLng(36.544857, 128.796951),
+            new kakao.maps.LatLng(36.545771, 128.797348),
+            new kakao.maps.LatLng(36.545978, 128.796694),
+            new kakao.maps.LatLng(36.546372, 128.796777),
+            new kakao.maps.LatLng(36.546557, 128.796219),
+            new kakao.maps.LatLng(36.546133, 128.795836),
+            new kakao.maps.LatLng(36.543349, 128.793958),
+            new kakao.maps.LatLng(36.542590, 128.792907),
+            new kakao.maps.LatLng(36.540967, 128.790569)
+        ];
+
+        // 지도에 표시할 다각형을 생성합니다
+        var polygon = new kakao.maps.Polygon({
+            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            strokeWeight: 3, // 선의 두께입니다
+            strokeColor: '#FF3DE5', // 선의 색깔입니다
+            strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'longdash', // 선의 스타일입니다
+            fillColor: '#FF8AEF', // 채우기 색깔입니다
+            fillOpacity: 0.05 // 채우기 불투명도 입니다
+        });
+
+        // 지도에 다각형을 표시합니다
+        polygon.setMap(map);
 
     });
 </script>
