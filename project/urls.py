@@ -30,4 +30,5 @@ urlpatterns = [
     path('article/detail/<int:id>/', views.detail),
     path('article/update/<int:id>/', views.update),
     path('article/delete/<int:id>/', views.delete),
+    path('help/', views.help),
 ]

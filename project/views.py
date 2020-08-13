@@ -7,6 +7,9 @@ from django.http import JsonResponse # JSON 응답
 from django.forms.models import model_to_dict
 from django.contrib import messages
 from django.core.paginator import Paginator
+import smtplib
+from email.mime.text import MIMEText
+
 
 def index(request):
     return render(request, 'index.html')
@@ -57,6 +60,8 @@ def board(request):
     return render(request, "board.html", {'article_list' : article_list, 'posts' : posts})
 
 def write(request):
+    if not request.session.session_key:
+        return HttpResponse('<script>alert("권한이 없습니다.");history.back()</script>')
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
@@ -69,9 +74,9 @@ def write(request):
             # insert into article (title, content, user_id) values (?, ?, ?)
             article = Article(title=title, content=content, user=user)
             article.save()
-            return render(request, 'write_success.html')
+            return HttpResponse('<script>alert("글 작성을 완료하였습니다.");location.href="/article/board/";</script>')
         except:
-            return render(request, 'write_fail.html')
+            return HttpResponse('<script>alert("오류가 발생하였습니다.");history.back()</script>')
     return render(request, 'write.html')
 
 
@@ -110,9 +115,9 @@ def delete(request, id):
         # select * from article where id = ?
         article = Article.objects.get(id=id)
         article.delete()
-        return render(request, 'delete_success.html')
+        return HttpResponse('<script>alert("삭제되었습니다.");location.href="/article/board/";</script>')
     except:
-        return render(request, 'delete_fail.html')
+        return HttpResponse('<script>alert("오류가 발생하였습니다 다시 시도해 주세요.");history.back()</script>')
 
 def signout(request):
     del request.session['userID'] # 개별 삭제
@@ -126,4 +131,24 @@ def map_data(request):
         li = model_to_dict(li)
         data.append(li)
     return JsonResponse(data, safe=False)
+
+
+def help(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        comment = request.POST.get('comment')
+        email = 'chojaelong@gmail.com'
+        # 발신자주소, 수신자주소, 메시지
+        send_mail(email, title, comment)
+        return HttpResponse('<script>alert("메일이 전송되었습니다 소중한 의견 감사합니다.");history.back()</script>')
+    return render(request, 'help.html')
+
+def send_mail(email, title, msg):
+    smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # SMTP 설정
+    smtp.login(email, 'lpzloitdranbjwro')  # 인증정보 설정
+    msg = MIMEText(msg)
+    msg['Subject'] = '[웹페이지 문의사항]' + title  # 제목
+    msg['To'] = email  # 수신 이메일
+    smtp.sendmail(email, email, msg.as_string())
+    smtp.quit()
 
