@@ -16,8 +16,59 @@
 </head>
 
 <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="/index">제목</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/map/">지도</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/board/">게시판</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/help/">문의하기</a>
+              </li>
+              
+            </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            {% if request.session.userID %}
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown02"
+                data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">{{ request.session.userID }}님</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown02">
+                      <a class="dropdown-item" href="/signout/">로그아웃</a>
+                    </div>
+              </li>
+            </ul>
+            {% else %}
+          <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown02"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">회원</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                         <a class="dropdown-item" href="/signin/">로그인</a>
+                      <a class="dropdown-item" href="/signup/">회원가입</a>
+                </div>
+                    </li>
+          </ul>
+          {% endif %}
+          
+    
+          </form>
+          </div>
+        </div>
+      </nav>
     <div class="container">
         <div class="py-5 text-center">
+            <br><br>
         <svg class="bi bi-unlock-fill mb-4" width="8em" height="8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   			<rect width="11" height="9" x="2.5" y="7" rx="2"/>
   			<path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
@@ -68,7 +119,7 @@
 
 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                <button class="btn btn-success btn-lg btn-block" type="submit">가입하기</button>
                 <hr class="mb-4">
 
             </form>
