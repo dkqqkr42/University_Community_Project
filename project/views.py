@@ -30,18 +30,6 @@ def signin(request):
 
 def map(request):
     return render(request, 'map.html')              # map 생성
-
-def map_data(request):
-    data = Point.objects.all()
-    lat = request.GET.get('lat')
-    lng = request.GET.get('lng')
-    map_list = []
-    for d in data:
-        d = model_to_dict(d) # QuerySet -> Dict
-        dist = distance(float(lat), float(lng), d['lat'], d['lng'])
-        map_list.append(d)
-    # dict가 아닌 자료는 항상 safe=False 옵션 사용
-    return JsonResponse(map_list, safe=False)
     
 def signup(request):
     if request.method == 'POST':
