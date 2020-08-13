@@ -2,9 +2,18 @@
 
 {% block content %}
 
+<header class="bg-info text-white">
+    <div class="container text-center">
+      <h1>캠퍼스맵</h1>
+      <br>
+      <p class="lead">주소 : 경상북도 안동시 경동로 1375 (송천동)</p>
+        <p>전화번호 : 054-820-5114</p>
+    </div>
+</header>
+
 <div class="jumbotron">
     <div class="container text-center">
-        <div id="map" style="width:500px; height:400px; margin:0 auto;"></div>
+        <div id="map" style="width:1000px; height:550px; margin:0 auto;"></div>
     </div>
 </div>
 
@@ -18,14 +27,163 @@
         var container = document.getElementById('map');
         var options = {
             center : new kakao.maps.LatLng(36.542258, 128.796883), // 안동대학교 (지도 중심 위치)
-            level : 4
+            level : 3
         };
+
         var map = new kakao.maps.Map(container, options);
         var markerPosition = new kakao.maps.LatLng(36.542258, 128.796883);  // 마커표시
         var marker = new kakao.maps.Marker({
             position: markerPosition
         });
         marker.setMap(map);
+
+        // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+        var positions = [
+            {
+                content: '<div>대학본부</div>', 
+                latlng: new kakao.maps.LatLng(36.541353, 128.797443)
+            },
+            {
+                content: '<div>도서관</div>', 
+                latlng: new kakao.maps.LatLng(36.540399, 128.795562)
+            },
+            {
+                content: '<div>박물관</div>', 
+                latlng: new kakao.maps.LatLng(36.542598, 128.79699)
+            },
+            {
+                content: '<div>운동장</div>',
+                latlng: new kakao.maps.LatLng(36.541312, 128.793162)
+            },
+            {
+                content: '<div>정보통신원</div>',
+                latlng: new kakao.maps.LatLng(36.542050, 128.795988)
+            },
+            {
+                content: '<div>체육관</div>',
+                latlng: new kakao.maps.LatLng(36.541754, 128.794378)
+            },
+            {
+                content: '<div>학생회관</div>',
+                latlng: new kakao.maps.LatLng(36.542426, 128.798176)
+            },
+            {
+                content: '<div>솔뫼문화관</div>',
+                latlng: new kakao.maps.LatLng(36.541329, 128.795332)
+            },
+            {
+                content: '<div>주차장</div>',
+                latlng: new kakao.maps.LatLng(36.539716, 128.794909)
+            },
+            {
+                content: '<div>가람관(기숙사)</div>',
+                latlng: new kakao.maps.LatLng(36.542573, 128.793584)
+            },
+            {
+                content: '<div>솔빛관(기숙사)</div>',
+                latlng: new kakao.maps.LatLng(36.544540, 128.796182)
+            },
+            {
+                content: '<div>솔뫼관(기숙사)</div>',
+                latlng: new kakao.maps.LatLng(36.545489, 128.796309)
+            },
+            {
+                content: '<div>종합연구동</div>',
+                latlng: new kakao.maps.LatLng(36.544498, 128.795232)
+            },
+            {
+                content: '<div>공대2호관</div>',
+                latlng: new kakao.maps.LatLng(36.543959, 128.796052)
+            },
+            {
+                content: '<div>공대1호관</div>',
+                latlng: new kakao.maps.LatLng(36.543467, 128.796238)
+            },
+            {
+                content: '<div>공동실험실습관</div>',
+                latlng: new kakao.maps.LatLng(36.544189, 128.796951)
+            },
+            {
+                content: '<div>사회과학관</div>',
+                latlng: new kakao.maps.LatLng(36.543261, 128.794664)
+            },
+            {
+                content: '<div>간호학관</div>',
+                latlng: new kakao.maps.LatLng(36.541006, 128.796339)
+            },
+            {
+                content: '<div>역동서원</div>',
+                latlng: new kakao.maps.LatLng(36.543617, 128.797221)
+            },
+            {
+                content: '<div>생활과학관</div>',
+                latlng: new kakao.maps.LatLng(36.543380, 128.798314)
+            },
+            {
+                content: '<div>미술학관</div>',
+                latlng: new kakao.maps.LatLng(36.543700, 128.800037)
+            },
+            {
+                content: '<div>자연대1호관</div>',
+                latlng: new kakao.maps.LatLng(36.542739, 128.798976)
+            },
+            {
+                content: '<div>자연대2호관</div>',
+                latlng: new kakao.maps.LatLng(36.541585, 128.799391)
+            },
+            {
+                content: '<div>산학협력관</div>',
+                latlng: new kakao.maps.LatLng(36.542559, 128.799742)
+            },
+            {
+                content: '<div>사범학관</div>',
+                latlng: new kakao.maps.LatLng(36.540866, 128.799280)
+            },
+            {
+                content: '<div>인문학관</div>',
+                latlng: new kakao.maps.LatLng(36.540390, 128.798400)
+            },
+            {
+                content: '<div>국제교류관</div>',
+                latlng: new kakao.maps.LatLng(36.540636, 128.799949)
+            },
+            {
+                content: '<div>음악관</div>',
+                latlng: new kakao.maps.LatLng(36.540904, 128.802186)
+            },
+            {
+                content: '<div>학군단</div>',
+                latlng: new kakao.maps.LatLng(36.540090, 128.802138)
+            },
+            {
+                content: '<div>연병장</div>',
+                latlng: new kakao.maps.LatLng(36.540536, 128.801134)
+            },
+            {
+                content: '<div>풋살장</div>',
+                latlng: new kakao.maps.LatLng(36.540651, 128.801660)
+            },
+            {
+                content: '<div>종합스포츠센터</div>',
+                latlng: new kakao.maps.LatLng(36.541580, 128.802348)
+            },
+            {
+                content: '<div>우체국</div>',
+                latlng: new kakao.maps.LatLng(36.542139, 128.795104)
+            },
+            {
+                content: '<div>고시원</div>',
+                latlng: new kakao.maps.LatLng(36.541227, 128.800097)
+            },
+            {
+                content: '<div>대학일자리센터</div>',
+                latlng: new kakao.maps.LatLng(36.542488, 128.796644)
+            },
+            {
+                content: '<div>버스정류장</div>',
+                latlng: new kakao.maps.LatLng(36.540498, 128.794347)
+            }
+        ];
 
         $.ajax({
             url: '/map_data/',
@@ -39,50 +197,79 @@
                         position : new kakao.maps.LatLng(res[i].lat, res[i].lng),
                         title : res[i].title,
                     });
-                }
+
+                    // 마커에 표시할 인포윈도우를 생성합니다 
+                    var infowindow = new kakao.maps.InfoWindow({
+                        content: positions[i].content // 인포윈도우에 표시할 내용
+                    });
+
+                    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+                    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+                    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+                    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                }                
             }
         });
 
-        // 커스텀 오버레이에 표시할 컨텐츠 입니다
-        // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-        // 별도의 이벤트 메소드를 제공하지 않습니다 
-        var content = '<div class="wrap">' + 
-                    '    <div class="info">' + 
-                    '        <div class="title">' + 
-                    '            국립안동대학교' + 
-                    '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-                    '        </div>' + 
-                    '        <div class="body">' + 
-                    '            <div class="img">' +
-                    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-                    '           </div>' + 
-                    '            <div class="desc">' + 
-                    '                <div class="ellipsis">경상북도 안동시 경동로 1375</div>' + 
-                    '                <div class="jibun ellipsis">054-820-5114</div>' + 
-                    '                <div><a href="http://www.andong.ac.kr/main" target="_blank" class="link">홈페이지</a></div>' + 
-                    '            </div>' + 
-                    '        </div>' + 
-                    '    </div>' +    
-                    '</div>';
-
-        // 마커 위에 커스텀오버레이를 표시합니다
-        // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-        var overlay = new kakao.maps.CustomOverlay({
-            content: content,
-            map: map,
-            position: marker.getPosition()       
-        });
-
-        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-        kakao.maps.event.addListener(marker, 'click', function() {
-            overlay.setMap(map);
-        });
-
-        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-        function closeOverlay() {
-            overlay.setMap(null);     
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
         }
 
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+        function makeOutListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }
+
+        // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
+        var polygonPath = [
+            new kakao.maps.LatLng(36.540750, 128.791177),
+            new kakao.maps.LatLng(36.539130, 128.794903),
+            new kakao.maps.LatLng(36.539649, 128.795149),
+            new kakao.maps.LatLng(36.540490, 128.796457),
+            new kakao.maps.LatLng(36.540878, 128.796559),
+            new kakao.maps.LatLng(36.540861, 128.796752),
+            new kakao.maps.LatLng(36.540990, 128.796956),
+            new kakao.maps.LatLng(36.538895, 128.800180),
+            new kakao.maps.LatLng(36.539237, 128.802444),
+            new kakao.maps.LatLng(36.541211, 128.803077),
+            new kakao.maps.LatLng(36.541865, 128.803252),
+            new kakao.maps.LatLng(36.544374, 128.801393),
+            new kakao.maps.LatLng(36.544978, 128.801003),
+            new kakao.maps.LatLng(36.544650, 128.800342),
+            new kakao.maps.LatLng(36.544616, 128.800084),
+            new kakao.maps.LatLng(36.544047, 128.798850),
+            new kakao.maps.LatLng(36.543943, 128.798443),
+            new kakao.maps.LatLng(36.544547, 128.796941),
+            new kakao.maps.LatLng(36.544857, 128.796951),
+            new kakao.maps.LatLng(36.545771, 128.797348),
+            new kakao.maps.LatLng(36.545978, 128.796694),
+            new kakao.maps.LatLng(36.546372, 128.796777),
+            new kakao.maps.LatLng(36.546557, 128.796219),
+            new kakao.maps.LatLng(36.546133, 128.795836),
+            new kakao.maps.LatLng(36.543349, 128.793958),
+            new kakao.maps.LatLng(36.542590, 128.792907),
+            new kakao.maps.LatLng(36.540967, 128.790569)
+        ];
+
+        // 지도에 표시할 다각형을 생성합니다
+        var polygon = new kakao.maps.Polygon({
+            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            strokeWeight: 3, // 선의 두께입니다
+            strokeColor: '#FF3DE5', // 선의 색깔입니다
+            strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'longdash', // 선의 스타일입니다
+            fillColor: '#FF8AEF', // 채우기 색깔입니다
+            fillOpacity: 0.05 // 채우기 불투명도 입니다
+        });
+
+        // 지도에 다각형을 표시합니다
+        polygon.setMap(map);
 
     });
 </script>
