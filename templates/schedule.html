@@ -6,7 +6,10 @@
         width: 100%;
         text-align: center;
     }
-
+    header{
+        background-color:burlywood;
+    }
+/*
     td {
         position: relative;
     }
@@ -36,9 +39,9 @@
     tbody tr td:nth-child(1) {
         margin-left: 0%;
     }
-    -->
+    */
 </style>
-<header class="bg-success text-white">
+<header class="">
     <div class="container text-center">
         <h1>시간표</h1>
         <br>
@@ -49,164 +52,164 @@
 <section id="about" class="">
     <div class="container">
         <table class="table table-striped table-bordered table-dark vertical-align">
-            <thead>
-                <tr>
-                    <td>
-                        <div class="content">월</div>
-                    </td>
-                    <td>
-                        <div class="content">화</div>
-                    </td>
-                    <td>
-                        <div class="content">수</div>
-                    </td>
-                    <td>
-                        <div class="content">목</div>
-                    </td>
-                    <td>
-                        <div class="content">금</div>
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                    <td>
-                        <div class="content">1</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <thead>
+        <tr>
+          <td>
+            <div class="content">월</div>
+          </td>
+          <td>
+            <div class="content">화</div>
+          </td>
+          <td>
+            <div class="content">수</div>
+          </td>
+          <td>
+            <div class="content">목</div>
+          </td>
+          <td>
+            <div class="content">금</div>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="content">{{mon.class1}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class1}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class1}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class1}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class1}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class2}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class2}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class2}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class2}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class2}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class3}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class3}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class3}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class3}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class3}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class4}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class4}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class4}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class4}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class4}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class5}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class5}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class5}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class5}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class5}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class6}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class6}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class6}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class6}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class6}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class7}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class7}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class7}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class7}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class7}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="content">{{mon.class8}}</div>
+          </td>
+          <td>
+            <div class="content">{{tue.class8}}</div>
+          </td>
+          <td>
+            <div class="content">{{wed.class8}}</div>
+          </td>
+          <td>
+            <div class="content">{{thu.class8}}</div>
+          </td>
+          <td>
+            <div class="content">{{fri.class8}}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     </div>
 </section>
 

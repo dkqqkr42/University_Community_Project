@@ -14,24 +14,8 @@ from bs4 import BeautifulSoup
 
 
 def index(request):
-    context = {}
-    try:
-        id = request.session['id']
-        if id:
-            mon = Monday.objects.get(user_id=id)
-            tue = Tuesday.objects.get(user_id=id)
-            wed = Wednesday.objects.get(user_id=id)
-            thu = Thursday.objects.get(user_id=id)
-            fri = Friday.objects.get(user_id=id )
-            context['mon'] = mon
-            context['tue'] = tue
-            context['wed'] = wed
-            context['thu'] = thu
-            context['fri'] = fri
-    except:
-        pass
-    
-    return render(request, 'index.html', context)
+       
+    return render(request, 'index.html')
     
 def signin(request):
     if request.method == 'POST':
@@ -237,6 +221,7 @@ def send_mail(email, title, msg):
     smtp.quit()
 
 def schedule(request):
+<<<<<<< HEAD
     return render(request, 'schedule.html')
 
 def food(request):
@@ -340,3 +325,23 @@ def food(request):
 #     }
     
 #     return render(request, 'exp.html', aa)
+=======
+    context = {}
+    try:
+        id = request.session['id']
+        if id:
+            mon = Monday.objects.get(user_id=id)
+            tue = Tuesday.objects.get(user_id=id)
+            wed = Wednesday.objects.get(user_id=id)
+            thu = Thursday.objects.get(user_id=id)
+            fri = Friday.objects.get(user_id=id )
+            context['mon'] = mon
+            context['tue'] = tue
+            context['wed'] = wed
+            context['thu'] = thu
+            context['fri'] = fri
+    except:
+        pass
+    
+    return render(request, 'schedule.html', context)
+>>>>>>> 67a6d0f7274ebb65ebd65316faa23fa10f721ad0
