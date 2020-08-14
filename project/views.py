@@ -11,6 +11,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 
+<<<<<<< HEAD
 def index(request):
     context = {}
     try:
@@ -30,6 +31,10 @@ def index(request):
         pass
     
     return render(request, 'index.html', context)
+=======
+def index(request):    
+    return render(request, 'index.html')
+>>>>>>> 9eb031cee29f6379b68c73c1a50653a59653352f
     
 def signin(request):
     if request.method == 'POST':
@@ -156,7 +161,7 @@ def write(request):
             # insert into article (title, content, user_id) values (?, ?, ?)
             article = Article(title=title, content=content, user=user)
             article.save()
-            HttpResponse('<script>alert("글 작성을 완료하였습니다.");location.href="/article/board/";</script>')
+            return HttpResponse('<script>alert("글 작성을 완료하였습니다.");location.href="/article/board/";</script>')
         except:
             return HttpResponse('<script>alert("로그인 후 이용해주세요.");history.back()</script>')
     return render(request, 'write.html')
@@ -235,4 +240,27 @@ def send_mail(email, title, msg):
     smtp.quit()
 
 def schedule(request):
+<<<<<<< HEAD
     return render(request, 'schedule.html')
+=======
+    if not request.session.session_key:
+        return HttpResponse('<script>alert("로그인 후 이용해 주세요.");history.back()</script>')
+    context = {}
+    try:
+        id = request.session['id']
+        if id:
+            mon = Monday.objects.get(user_id=id)
+            tue = Tuesday.objects.get(user_id=id)
+            wed = Wednesday.objects.get(user_id=id)
+            thu = Thursday.objects.get(user_id=id)
+            fri = Friday.objects.get(user_id=id )
+            context['mon'] = mon
+            context['tue'] = tue
+            context['wed'] = wed
+            context['thu'] = thu
+            context['fri'] = fri
+    except:
+        pass
+    
+    return render(request, 'schedule.html', context)
+>>>>>>> 9eb031cee29f6379b68c73c1a50653a59653352f

@@ -89,14 +89,14 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/index">제목</a>
+      <a class="navbar-brand" href="/index">ANU Community</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/map/">지도</a>
+            <a class="nav-link" href="/map/">캠퍼스맵</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/article/board/">게시판</a>
@@ -145,10 +145,29 @@
   {% endblock %}
   
 <!-- Footer -->
-  <footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright 2020. 1조. Ltd. all rights reserved.</p>
+  </div>
+  <hr>
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright 2020. 1조. Ltd. all rights reserved.</p>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="btn-group btn-group-justified">
+          <button type="button" onclick="window.open('https://i4u.anu.ac.kr/')"
+            class="btn btn-dark ">종합정보시스템</button>
+          <button type="button" onclick="window.open('https://sugang2.anu.ac.kr/')"
+            class="btn btn-dark ">수강신청</button>
+          <button type="button" onclick="window.open('https://lib.andong.ac.kr/#/')"
+            class="btn btn-dark ">도서관홈페이지</button>
+          <button type="button" onclick="window.open('https://anujob.andong.ac.kr/')"
+            class="btn btn-dark ">취업창업정보시스템</button>
+          <button type="button" onclick="window.open('http://lms.andong.ac.kr/ilos/main/main_form.acl')"
+            class="btn btn-dark ">학습관리시스템(LMS)</button>
+        </div></div>
+      </div>
     </div>
+<<<<<<< HEAD
     <hr>
       <div class="container">
         <div class="row">
@@ -169,6 +188,10 @@
       </div>
     <!-- /.container -->
   </footer>
+=======
+  <!-- /.container -->
+</footer>
+>>>>>>> 9eb031cee29f6379b68c73c1a50653a59653352f
   
 </body>
 </html>
