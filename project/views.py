@@ -14,8 +14,25 @@ from bs4 import BeautifulSoup
 
 
 def index(request):
-    return render(request, 'index.html')
-
+    context = {}
+    try:
+        id = request.session['id']
+        if id:
+            mon = Monday.objects.get(user_id=id)
+            tue = Tuesday.objects.get(user_id=id)
+            wed = Wednesday.objects.get(user_id=id)
+            thu = Thursday.objects.get(user_id=id)
+            fri = Friday.objects.get(user_id=id )
+            context['mon'] = mon
+            context['tue'] = tue
+            context['wed'] = wed
+            context['thu'] = thu
+            context['fri'] = fri
+    except:
+        pass
+    
+    return render(request, 'index.html', context)
+    
 def signin(request):
     if request.method == 'POST':
         # 회원정보 조회
@@ -26,7 +43,9 @@ def signin(request):
             user = User.objects.get(userID=userID, userPassword=userPassword)
             # 정보표시
             request.session['userID'] = userID
-            return render(request, 'index.html')
+            request.session['id'] = user.id
+            return HttpResponseRedirect('/index/')
+            # return render(request, 'index.html')
         except:
             # messages.info(request, '아이디나 비밀번호가 다릅니다.')
             return HttpResponse('<script>alert("아이디나 비밀번호가 다릅니다.");history.back()</script>')
@@ -103,7 +122,7 @@ def signup(request):
         friday = Friday(class1=fri1, class2=fri2, class3=fri3, class4=fri4, class5=fri5, class6=fri6, class7=fri7, class8=fri8, user=user)
         friday.save()
 
-        return HttpResponseRedirect('/index/')
+        return HttpResponse('<script>alert("회원가입이 완료되었습니다. 가입한 아이디로 로그인 해주세요.");location.href="/signin/";</script>')
     # if User.objects.filter(userID=userID).exists():
     #     return HttpResponse('이미 사용중입니다.')
 
@@ -139,7 +158,7 @@ def write(request):
             # insert into article (title, content, user_id) values (?, ?, ?)
             article = Article(title=title, content=content, user=user)
             article.save()
-            return HttpResponse('<script>alert("글 작성이 완료되었습니다.");history.back()</script>')
+            HttpResponse('<script>alert("글 작성을 완료하였습니다.");location.href="/article/board/";</script>')
         except:
             return HttpResponse('<script>alert("로그인 후 이용해주세요.");history.back()</script>')
     return render(request, 'write.html')
@@ -167,7 +186,7 @@ def update(request, id):
             article.title = title
             article.content = content
             article.save()
-            return HttpResponse('<script>alert("수정되었습니다.");history.back()</script>')
+            return HttpResponse('<script>alert("수정하였습니다.");location.href="/article/board/";</script>')
         except:
             return HttpResponse('<script>alert("수정할 수 없습니다.");history.back()</script>')
     context = {
@@ -180,7 +199,7 @@ def delete(request, id):
         # select * from article where id = ?
         article = Article.objects.get(id=id)
         article.delete()
-        return HttpResponse('<script>alert("삭제되었습니다.");history.back()</script>')
+        return HttpResponse('<script>alert("삭제되었습니다.");location.href="/article/board/";</script>')
     except:
         return HttpResponse('<script>alert("삭제할 수 없습니다.");history.back()</script>')
 
