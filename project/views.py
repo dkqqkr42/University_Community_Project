@@ -11,8 +11,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-def index(request):
-       
+def index(request):    
     return render(request, 'index.html')
     
 def signin(request):
@@ -140,7 +139,7 @@ def write(request):
             # insert into article (title, content, user_id) values (?, ?, ?)
             article = Article(title=title, content=content, user=user)
             article.save()
-            HttpResponse('<script>alert("글 작성을 완료하였습니다.");location.href="/article/board/";</script>')
+            return HttpResponse('<script>alert("글 작성을 완료하였습니다.");location.href="/article/board/";</script>')
         except:
             return HttpResponse('<script>alert("로그인 후 이용해주세요.");history.back()</script>')
     return render(request, 'write.html')
@@ -219,6 +218,8 @@ def send_mail(email, title, msg):
     smtp.quit()
 
 def schedule(request):
+    if not request.session.session_key:
+        return HttpResponse('<script>alert("로그인 후 이용해 주세요.");history.back()</script>')
     context = {}
     try:
         id = request.session['id']
