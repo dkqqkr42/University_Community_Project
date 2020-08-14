@@ -32,5 +32,5 @@ urlpatterns = [
     path('article/delete/<int:id>/', views.delete),
     path('help/', views.help),
     path('schedule/', views.schedule),
-    # path('food/', views.food),
+    path('food/', views.food),
 ]
