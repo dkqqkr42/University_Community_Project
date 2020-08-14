@@ -218,9 +218,6 @@ def send_mail(email, title, msg):
     smtp.quit()
 
 def schedule(request):
-<<<<<<< HEAD
-    return render(request, 'schedule.html')
-=======
     if not request.session.session_key:
         return HttpResponse('<script>alert("로그인 후 이용해 주세요.");history.back()</script>')
     context = {}
@@ -241,4 +238,3 @@ def schedule(request):
         pass
     
     return render(request, 'schedule.html', context)
->>>>>>> 9eb031cee29f6379b68c73c1a50653a59653352f
