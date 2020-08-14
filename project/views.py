@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 import smtplib
 from email.mime.text import MIMEText
+# import requests
+# from bs4 import BeautifulSoup
 
 
 def index(request):
@@ -34,7 +36,7 @@ def signin(request):
 def map(request):
     return render(request, 'map.html')              # map 생성
 
-    
+ 
 def signup(request):
     if request.method == 'POST':
         userID = request.POST.get("userID")
@@ -159,3 +161,40 @@ def send_mail(email, title, msg):
     smtp.sendmail(email, email, msg.as_string())
     smtp.quit()
 
+# def food(soup):
+#     req = requests.get('http://www.andong.ac.kr/main/module/foodMenu/index.do?menu_idx=222')
+#     html = req.text
+#     soup = BeautifulSoup(html, 'html.parser')
+#     my_titles = soup.select('h3 > a')
+#     data = {}
+#     for title in my_titles:
+#         data[title.text] = title.get('href')
+#     return render(soup, 'food.html', data)
+
+
+# def food(request):
+#     result = requests.get('http://www.andong.ac.kr/main/module/foodMenu/index.do?menu_idx=222')
+#     result.encoding = 'utf-8'
+#     result = result.text
+#     s_table = 0
+#     e_table = 0
+#     star = ["","","","","","","","","","","","","","",]
+#     i=0
+#     while True:
+#         s_table = result.find('<table',e_table)
+#         s_table = result.find('>',s_table)        
+#         if s_table == -1:
+#             break
+#         e_table = result.find('</table>',s_table)
+#         star[i] += '<div class="jumbotron"><table class="table table-hover"'+result[s_table:e_table+8]+'</div>'
+#         i+=1
+#     r_ta = {
+#         'contact' : star[0],
+#         'contact1' : star[1],
+#         'contact2' : star[2],
+#         'contact3' : star[3],
+#         'contact4' : star[4],
+#         'contact5' : star[5],
+#         'contact6' : star[6],
+#     }
+#     return render(request, 'food.html',r_ta)
