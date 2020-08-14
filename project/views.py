@@ -9,13 +9,27 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 import smtplib
 from email.mime.text import MIMEText
-import requests
-from bs4 import BeautifulSoup
 
 
 def index(request):
-       
-    return render(request, 'index.html')
+    context = {}
+    try:
+        id = request.session['id']
+        if id:
+            mon = Monday.objects.get(user_id=id)
+            tue = Tuesday.objects.get(user_id=id)
+            wed = Wednesday.objects.get(user_id=id)
+            thu = Thursday.objects.get(user_id=id)
+            fri = Friday.objects.get(user_id=id )
+            context['mon'] = mon
+            context['tue'] = tue
+            context['wed'] = wed
+            context['thu'] = thu
+            context['fri'] = fri
+    except:
+        pass
+    
+    return render(request, 'index.html', context)
     
 def signin(request):
     if request.method == 'POST':
@@ -221,127 +235,4 @@ def send_mail(email, title, msg):
     smtp.quit()
 
 def schedule(request):
-<<<<<<< HEAD
     return render(request, 'schedule.html')
-
-def food(request):
-    # food_point = Food_Inpo.objects.order_by('id')
-    # context = {
-    # 'food_point' : food_point
-    # }
-    # return render(request, 'food.html', context)
-    result = requests.get('https://www.tourandong.com/public/sub3/sub1.cshtml')
-    result.encoding = 'utf-8'
-    result = result.text
-    s_table = 0
-    e_table = 0
-    star = ["","","","","","","","","","","","","","",]
-    i=0
-    while True:
-        s_table = result.find('<table',e_table)
-        s_table = result.find('>',s_table)        
-        if s_table == -1:
-            break
-        e_table = result.find('</table>',s_table)
-        star[i] += '<div class="jumbotron"><table class="table table-hover"'+result[s_table:e_table+8]+'</div>'
-        i+=1
-    r_ta = {
-        'contact' : star[0],
-        'contact1' : star[1],
-        'contact2' : star[2],
-        'contact3' : star[3],
-        'contact4' : star[4],
-        'contact5' : star[5],
-        'contact6' : star[6],
-    }
-    return render(request, 'food.html',r_ta)
-# def food(request):
-#     info_list = Inpo.objects.order_by('id')
-
-#     address = 'https://www.tourandong.com/public/sub2/sub4.cshtml'
-#     res = requests.get(address)
-#     res.encoding = None
-#     stra ="<table class='table table-hover'><thead><tr><th style='text-align: center;'>상호명</th><th style='text-align: center;'>주소</th><th style='text-align: center;'>전화번호</th></tr></thead>"
-#     i=0
-#     parse = bs(res.text, 'html.parser')
-#     a_list = parse.select('#contentDiv a p')
-#     a_list2 = parse.select('.tour_course_thum strong')
-#     for a in a_list:
-#         stra+="<tr>"
-#         stra+="<td>"+ a_list2[i].text + "</td>"
-#         i+=1
-#         if a.text.find('전화') != -1:
-#             stra += '<td>'+(a.text)[5:a.text.find('전화')]+'</td>'
-#             stra += '<td>'+(a.text)[a.text.find('전화')+5:-6]+'</td>'
-#         else:
-#             stra += '<td>'+(a.text)[5:-6]+'</td><td></td>'
-#         stra+="</tr>"
-#     stra+="</table>"
-
-#     address2 = 'https://www.tourandong.com/public/sub2/sub5.cshtml'
-#     res = requests.get(address2)
-#     res.encoding = None
-#     strb ="<table class='table table-hover'><thead><tr><th style='text-align: center;'>상호명</th><th style='text-align: center;'>주소</th><th style='text-align: center;'>전화번호</th></tr></thead>"
-#     i=0
-#     parse = bs(res.text, 'html.parser')
-#     a_list = parse.select('#contentDiv a p')
-#     a_list2 = parse.select('.tour_course_thum strong')
-#     for a in a_list:
-#         strb+="<tr>"
-#         strb+="<td>"+ a_list2[i].text + "</td>"
-#         i+=1
-#         if a.text.find('전화') != -1:
-#             strb += '<td>'+(a.text)[5:a.text.find('전화')]+'</td>'
-#             strb += '<td>'+(a.text)[a.text.find('전화')+5:-6]+'</td>'
-#         else:
-#             strb += '<td>'+(a.text)[5:-6]+'</td><td></td>'
-#         strb+="</tr>"
-#     strb+="</table>"
-
-#     address3 = 'https://www.tourandong.com/public/sub2/sub6.cshtml'
-#     res = requests.get(address3)
-#     res.encoding = None
-#     strc ="<table class='table table-hover'><thead><tr><th style='text-align: center;'>상호명</th><th style='text-align: center;'>개화시기</th><th style='text-align: center;'>주변관광지</th></tr></thead>"
-#     i=0
-#     parse = bs(res.text, 'html.parser')
-#     a_list = parse.select('.flower_spot ul li')
-#     a_list2 = parse.select('.flower_spot dt')
-#     for a in a_list2:
-#         strc+="<tr>"
-#         strc+="<td>"+ a.text + "</td>"
-#         strc += '<td>'+(a_list[i].text)[6:]+'</td>'
-#         strc += '<td>'+(a_list[i+1].text)[7:]+'</td>'
-#         i+=2
-#         strc+="</tr>"
-#     strc+="</table>"
-
-
-
-#     aa = {
-#         'gg' : info_list,
-#         'contact' : stra,
-#         'contact2' : strb,
-#         'contact3' : strc,
-#     }
-    
-#     return render(request, 'exp.html', aa)
-=======
-    context = {}
-    try:
-        id = request.session['id']
-        if id:
-            mon = Monday.objects.get(user_id=id)
-            tue = Tuesday.objects.get(user_id=id)
-            wed = Wednesday.objects.get(user_id=id)
-            thu = Thursday.objects.get(user_id=id)
-            fri = Friday.objects.get(user_id=id )
-            context['mon'] = mon
-            context['tue'] = tue
-            context['wed'] = wed
-            context['thu'] = thu
-            context['fri'] = fri
-    except:
-        pass
-    
-    return render(request, 'schedule.html', context)
->>>>>>> 67a6d0f7274ebb65ebd65316faa23fa10f721ad0
