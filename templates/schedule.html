@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    table {
+        width: 100%;
+        text-align: center;
+    }
+
+    td {
+        position: relative;
+    }
+
+    td:after {
+        content: '';
+        display: block;
+        margin-top: 80%;
+    }
+
+    td .content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .table > tbody > tr > td {
+     vertical-align: middle;
+}
+    thead tr:nth-child(1) td:after {
+        margin-top: 0%;
+    }
+    thead tr td:nth-child(1) {
+        margin-left: 0%;
+    }
+    tbody tr td:nth-child(1) {
+        margin-left: 0%;
+    }
+    -->
+</style>
+<header class="bg-success text-white">
+    <div class="container text-center">
+        <h1>시간표</h1>
+        <br>
+        <p class="lead">시간표</p>
+    </div>
+</header>
+
+<section id="about" class="">
+    <div class="container">
+        <table class="table table-striped table-bordered table-dark vertical-align">
+            <thead>
+                <tr>
+                    <td>
+                        <div class="content">월</div>
+                    </td>
+                    <td>
+                        <div class="content">화</div>
+                    </td>
+                    <td>
+                        <div class="content">수</div>
+                    </td>
+                    <td>
+                        <div class="content">목</div>
+                    </td>
+                    <td>
+                        <div class="content">금</div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                    <td>
+                        <div class="content">1</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}
