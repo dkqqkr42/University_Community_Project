@@ -11,30 +11,8 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-<<<<<<< HEAD
-def index(request):
-    context = {}
-    try:
-        id = request.session['id']
-        if id:
-            mon = Monday.objects.get(user_id=id)
-            tue = Tuesday.objects.get(user_id=id)
-            wed = Wednesday.objects.get(user_id=id)
-            thu = Thursday.objects.get(user_id=id)
-            fri = Friday.objects.get(user_id=id )
-            context['mon'] = mon
-            context['tue'] = tue
-            context['wed'] = wed
-            context['thu'] = thu
-            context['fri'] = fri
-    except:
-        pass
-    
-    return render(request, 'index.html', context)
-=======
 def index(request):    
     return render(request, 'index.html')
->>>>>>> 9eb031cee29f6379b68c73c1a50653a59653352f
     
 def signin(request):
     if request.method == 'POST':
